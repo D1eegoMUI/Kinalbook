@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { createPublication, updatePublication } from './publication.controller.js';
-import { validateCreatePublication, validateUpdatePublication } from '../../middlewares/publication-validator.js';
+import { validateCreatePublication, validateUpdatePublication } from '../../middlewares/publication.validator.js';
 
 const router = Router();
 
