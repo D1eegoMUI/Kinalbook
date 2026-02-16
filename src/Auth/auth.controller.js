@@ -69,3 +69,59 @@ export const login = async (req, res) => {
         });
     }
 };
+
+// EDITAR PERFIL
+export const updateUserProfile = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { oldPassword, newPassword, ...newData } = req.body;
+
+        // 1. Buscar al usuario
+        const user = await User.findById(id);
+        if (!user) {
+            return res.status(404).json({
+                success: false,
+                message: 'Usuario no encontrado'
+            });
+        }
+
+        // 2. Si intenta cambiar la contraseña, validar la anterior (REQUISITO DEL LAB)
+        if (newPassword) {
+            if (!oldPassword) {
+                return res.status(400).json({
+                    success: false,
+                    message: 'Para cambiar la contraseña debes ingresar la anterior'
+                });
+            }
+
+            if (user.UserPassword !== oldPassword) {
+                return res.status(400).json({
+                    success: false,
+                    message: 'La contraseña anterior no coincide'
+                });
+            }
+            // Si coincide, actualizamos con la nueva
+            user.UserPassword = newPassword;
+        }
+
+        // 3. Actualizar otros campos (Nombre de usuario, correo, etc.)
+        // Usamos findByIdAndUpdate para aplicar runValidators
+        const updatedUser = await User.findByIdAndUpdate(id, { 
+            ...newData, 
+            UserPassword: user.UserPassword 
+        }, { new: true, runValidators: true });
+
+        res.status(200).json({
+            success: true,
+            message: 'Perfil actualizado exitosamente',
+            data: updatedUser
+        });
+
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: 'Error al actualizar el perfil',
+            error: error.message
+        });
+    }
+};

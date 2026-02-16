@@ -1,12 +1,15 @@
 import { Router } from 'express';
-import { login, register } from './auth.controller.js';
+import { login, register, updateUserProfile } from './auth.controller.js';
+// Si tienes los validadores de perfil, impórtalos aquí
 
 const router = Router();
 
-// Ruta para registrarse
+// Ruta para registrarse (Crear cuenta)
 router.post('/register', register);
 
 // Ruta para iniciar sesión
 router.post('/login', login);
+
+router.put('/update-profile/:id', updateUserProfile);
 
 export default router;
