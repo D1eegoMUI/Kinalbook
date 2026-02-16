@@ -3,7 +3,7 @@
 import { Router } from 'express';
 import { getCategories, createCategory, changeCategoryStatus } from './category.controller.js';
 
-import { validateCreateCategory, validateUpdateCategory } from '../../middlewares/category-validator.js';
+import { validateCreateCategory, validateUpdateCategory } from '../../middlewares/category.validator.js';
 
 const router = Router();
 
