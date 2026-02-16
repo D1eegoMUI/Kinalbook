@@ -3,7 +3,7 @@
 import { Router } from 'express';
 import { createComment, updateComment, deleteComment } from './comment.controller.js';
 
-import { validateCreateComment, validateUpdateComment, validateDeleteComment } from '../../middlewares/comment-validator.js';
+import { validateCreateComment, validateUpdateComment, validateDeleteComment } from '../../middlewares/comment.validator.js';
 
 const router = Router();
 

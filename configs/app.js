@@ -11,6 +11,12 @@ import { errorHandler } from '../middlewares/handle-errors.js';
 
 //Rutas
 const BASE_URL = '/Kinalbook/v1';
+import userRoutes from '../src/User/user.routes.js';
+import categoryRoutes from '../src/Category/category.routes.js';
+import publicationRoutes from '../src/Publication/publication.routes.js';
+import authRoutes from '../src/Auth/auth.routes.js'
+import commentRoutes from '../src/Comments/commet.routes.js';
+
 
 const middleware = (app) => {
     app.use(helmet(helmetConfiguration));
@@ -23,7 +29,11 @@ const middleware = (app) => {
 
 //rutas modulos
 const routes = (app) => {
-
+    app.use(`${BASE_URL}/user`, userRoutes);
+    app.use(`${BASE_URL}/category`, categoryRoutes);
+    app.use(`${BASE_URL}/publication`, publicationRoutes);
+    app.use(`${BASE_URL}/auth`, authRoutes);
+    app.use(`${BASE_URL}/comment`, commentRoutes);
 }
 
 const initServer = async () => {
@@ -35,7 +45,7 @@ const initServer = async () => {
         middleware(app);
         
         // Las rutas deben cargarse ANTES que el manejador de errores
-        //routes(app);
+        routes(app);
 
         // El manejador de errores siempre debe ir al final
         app.use(errorHandler);
