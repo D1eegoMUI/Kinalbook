@@ -6,7 +6,7 @@
   },
   "item": [
     {
-      "name": "update",
+      "name": "Auth",
       "item": [
         {
           "name": "GetAll",
@@ -53,7 +53,7 @@
           "response": []
         },
         {
-          "name": "login",
+          "name": "Login",
           "id": "d6ee6994-c657-4fa8-88ae-2f5affdcff75",
           "request": {
             "method": "POST",
@@ -85,7 +85,7 @@
           "response": []
         },
         {
-          "name": "update",
+          "name": "UpdateUser",
           "id": "d87c2c1e-47f8-4c61-a108-12fc98b1e2f6",
           "request": {
             "method": "PUT",
@@ -122,7 +122,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n  \"CategoryName\": \"Tecnología\",\r\n  \"CategoryDescription\": \"Todo sobre software y hardware de última generación\",\r\n  \"CategoryStatus\": \"ACTIVE\"\r\n}",
+              "raw": "{\r\n  \"CategoryName\": \"Peliculas\",\r\n  \"CategoryDescription\": \"Todo sobre software y hardware de última generación\"\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -147,19 +147,122 @@
           "response": []
         },
         {
-          "name": "GetAll",
+          "name": "GetAllCategory",
           "id": "0e0e78a4-9b41-4baf-9e5f-dcc550d53135",
           "request": {
             "method": "GET",
             "header": [],
             "url": {
-              "raw": ""
+              "raw": "http://localhost:3001/Kinalbook/v1/category/",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3001",
+              "path": [
+                "Kinalbook",
+                "v1",
+                "category",
+                ""
+              ]
             }
           },
           "response": []
         }
       ],
       "id": "ff216873-c0a3-48b9-8b93-bb4c088d7459"
+    },
+    {
+      "name": "Publication",
+      "item": [
+        {
+          "name": "GetAllPublication",
+          "id": "bd55526a-ef12-4c7e-bcb8-bcecae267691",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3001/Kinalbook/v1/publication/",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3001",
+              "path": [
+                "Kinalbook",
+                "v1",
+                "publication",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "CreatePublication",
+          "id": "2b0bee06-94b5-44bb-90c8-f3eac52fa18a",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"PubTitle\": \"OMG MIRA ESTA PELICULA\",\r\n  \"PubCategory\": \"69a59a81f70923e6b771cc59\",\r\n  \"PubContent\": \"Esta pelicula es muy buena\",\r\n  \"PubAuthor\": \"69a59a45f70923e6b771cc53\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3001/Kinalbook/v1/publication",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3001",
+              "path": [
+                "Kinalbook",
+                "v1",
+                "publication"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "UpdatePublication",
+          "id": "6fb5806a-e09f-4adf-8f60-d47616f9ecc3",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"PubTitle\": \"Opinión actualizada de C#\",\r\n  \"PubContent\": \"Esta pelicula es muy mala\",\r\n  \"PubAuthor\": \"69a59a45f70923e6b771cc53\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3001/Kinalbook/v1/publication/6993587bba248fa021fc7d5b",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3001",
+              "path": [
+                "Kinalbook",
+                "v1",
+                "publication",
+                "6993587bba248fa021fc7d5b"
+              ]
+            }
+          },
+          "response": []
+        }
+      ],
+      "id": "81bccb82-5f8a-4a17-9187-18e915f0a4c3"
     },
     {
       "name": "Comments",
@@ -172,7 +275,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n  \"CommentText\": \"¡Excelente post! Muy útil la información.\",\r\n  \"PubId\": \"69a595586593282dd1549d7f\",\r\n  \"AuthorId\": \"69a594d36593282dd1549d7b\"\r\n}",
+              "raw": "{\r\n  \"CommentText\": \"Muy bueno\",\r\n  \"PubId\": \"69a59addf70923e6b771cc62\",\r\n  \"AuthorId\": \"699356e2ba248fa021fc7d4c\"\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -204,7 +307,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n  \"CommentText\": \"Comentario corregido satisfactoriamente.\",\r\n  \"AuthorId\": \"69a594d36593282dd1549d7b\"\r\n\r\n}",
+              "raw": "{\r\n  \"CommentText\": \"Muy malo\",\r\n  \"AuthorId\": \"699356e2ba248fa021fc7d4c\"\r\n\r\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -212,7 +315,7 @@
               }
             },
             "url": {
-              "raw": "http://localhost:3001/Kinalbook/v1/comment/69a5967b7238724510955ff6",
+              "raw": "http://localhost:3001/Kinalbook/v1/comment/69a59b5af70923e6b771cc69",
               "protocol": "http",
               "host": [
                 "localhost"
@@ -222,7 +325,7 @@
                 "Kinalbook",
                 "v1",
                 "comment",
-                "69a5967b7238724510955ff6"
+                "69a59b5af70923e6b771cc69"
               ]
             }
           },
@@ -244,7 +347,7 @@
               }
             },
             "url": {
-              "raw": "http://localhost:3001/Kinalbook/v1/comment/69a5967b7238724510955ff6",
+              "raw": "http://localhost:3001/Kinalbook/v1/comment/69a59b5af70923e6b771cc69",
               "protocol": "http",
               "host": [
                 "localhost"
@@ -254,14 +357,14 @@
                 "Kinalbook",
                 "v1",
                 "comment",
-                "69a5967b7238724510955ff6"
+                "69a59b5af70923e6b771cc69"
               ]
             }
           },
           "response": []
         },
         {
-          "name": "GetAll",
+          "name": "GetAllComment",
           "id": "b44c3b4e-2bf0-4db0-82e1-12b31352b474",
           "request": {
             "method": "GET",
@@ -285,97 +388,6 @@
         }
       ],
       "id": "b3c07cec-4029-4b08-b00c-9af4762e298e"
-    },
-    {
-      "name": "Publication",
-      "item": [
-        {
-          "name": "GetAll",
-          "id": "bd55526a-ef12-4c7e-bcb8-bcecae267691",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "http://localhost:3001/Kinalbook/v1/publication",
-              "protocol": "http",
-              "host": [
-                "localhost"
-              ],
-              "port": "3001",
-              "path": [
-                "Kinalbook",
-                "v1",
-                "publication"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "CreatePublication",
-          "id": "2b0bee06-94b5-44bb-90c8-f3eac52fa18a",
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n  \"PubTitle\": \"Mi primera publicación en Kinalbook\",\r\n  \"PubCategory\": \"699357c4ba248fa021fc7d56\",\r\n  \"PubContent\": \"Este es el contenido de prueba para mi laboratorio de Node.js\",\r\n  \"PubAuthor\": \"69a594d36593282dd1549d7b\"\r\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "http://localhost:3001/Kinalbook/v1/publication",
-              "protocol": "http",
-              "host": [
-                "localhost"
-              ],
-              "port": "3001",
-              "path": [
-                "Kinalbook",
-                "v1",
-                "publication"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "UpdatePublication",
-          "id": "6fb5806a-e09f-4adf-8f60-d47616f9ecc3",
-          "request": {
-            "method": "PUT",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n  \"PubTitle\": \"Título Actualizado\",\r\n  \"PubContent\": \"He cambiado el contenido original.\",\r\n  \"PubAuthor\": \"69a594d36593282dd1549d7b\"\r\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            },
-            "url": {
-              "raw": "http://localhost:3001/Kinalbook/v1/publication/69a595586593282dd1549d7f",
-              "protocol": "http",
-              "host": [
-                "localhost"
-              ],
-              "port": "3001",
-              "path": [
-                "Kinalbook",
-                "v1",
-                "publication",
-                "69a595586593282dd1549d7f"
-              ]
-            }
-          },
-          "response": []
-        }
-      ],
-      "id": "81bccb82-5f8a-4a17-9187-18e915f0a4c3"
     }
   ]
 }
