@@ -1,4 +1,21 @@
 import Comment from './comment.model.js';
+import Publication from '../Publication/publication.model.js'
+import User from  '../User/user.model.js'
+
+export const getComments = async (req, res) => {
+    try {
+        const comments = await Comment.find()
+            .populate('AuthorId', 'UserName UserEmail') // Trae solo nombre y correo del autor
+            .populate('PubId', 'PubTitle'); // Trae el título de la publicación
+
+        res.status(200).json({
+            success: true,
+            comments
+        });
+    } catch (error) {
+        res.status(500).json({ success: false, message: 'Error al obtener comentarios', error: error.message });
+    }
+};
 
 export const createComment = async (req, res) => {
     try {

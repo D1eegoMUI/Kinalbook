@@ -1,8 +1,10 @@
 import { Router } from 'express';
-import { createPublication, updatePublication } from './publication.controller.js';
+import { createPublication, getPublications, updatePublication } from './publication.controller.js';
 import { validateCreatePublication, validateUpdatePublication } from '../../middlewares/publication.validator.js';
 
 const router = Router();
+
+router.get('/', getPublications);
 
 router.post('/', validateCreatePublication, createPublication);
 

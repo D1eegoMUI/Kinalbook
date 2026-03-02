@@ -1,6 +1,21 @@
 import Publication from './publication.model.js';
 import Category from '../Category/category.model.js';
 
+export const getPublications = async (req, res) => {
+    try {
+        const publications = await Publication.find()
+            .populate('PubCategory', 'CategoryName') // Trae el nombre de la categoría
+            .populate('PubAuthor', 'UserName');      // Trae el nombre del autor
+
+        res.status(200).json({
+            success: true,
+            publications
+        });
+    } catch (error) {
+        res.status(500).json({ success: false, message: 'Error al obtener publicaciones', error: error.message });
+    }
+};
+
 export const createPublication = async (req, res) => {
     try {
         const data = req.body;

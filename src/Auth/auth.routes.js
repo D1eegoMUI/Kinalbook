@@ -1,9 +1,10 @@
 import { Router } from 'express';
-import { login, register, updateUserProfile } from './auth.controller.js';
+import { getUsers, login, register, updateUserProfile } from './auth.controller.js';
 // Si tienes los validadores de perfil, impórtalos aquí
 
 const router = Router();
 
+router.get('/', getUsers);
 // Ruta para registrarse (Crear cuenta)
 router.post('/register', register);
 
